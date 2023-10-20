@@ -12,7 +12,7 @@ cur=con.cursor(buffered=True)
 #cur.execute("create table mc(`sl_no` INT NOT NULL AUTO_INCREMENT,`item` VARCHAR(45) NULL,`price` INT NULL,PRIMARY KEY (`sl_no`));")
 
 def menu():
-    print("WELCOME TO ZOMATO")
+    print("\nWELCOME TO ZOMATO")
     print("WE BRING FOOD TO YOU")
     r=input("Customer or admin?")
     if r=="customer":
@@ -358,30 +358,64 @@ def dining():
     if y==1:
         print("The availible dining locations are")
         print("KFC\nTHAAL RESTRNT\nBURGER KING\nMCDONALDS\n")
-        r=input("Where do u want to book a slot at")
+        r=input("Where do u want to book a slot at\n")
         if r=='kfc':
             u=input("Enter the time slot")
-
+            cur.execute("UPDATE `zomato`.`kfcdining` SET `status` = 'reserved' WHERE (`time_slots` = '{}');".format(u))
+            con.commit()
+            print("Reservation booked\n")
+            p=int(input("Press 1 to view the timeslots"))
+            if p==1:
+                k=cur.execute("select * from kfcdining ")
+                for i in cur:
+                    print(i)
+            print(" ")
+                
+            con.commit()
         elif r=='burgerking':
             u=input("Enter the time slot")
-
+            cur.execute("UPDATE `zomato`.`burgerkingdining` SET `status` = 'reserved' WHERE (`time_slots` = '{}');".format(u))
+            con.commit()
+            print("Reservation booked\n")
+            p=int(input("Press 1 to view the timeslots"))
+            if p==1:
+                k=cur.execute("select * from burgerkingdining ")
+                for i in cur:
+                    print(i)
+            print(" ")
         elif r=='mc':
             u=input("Enter the time slot")
-
+            cur.execute("UPDATE `zomato`.`mcdining` SET `status` = 'reserved' WHERE (`time_slots` = '{}');".format(u))
+            con.commit()
+            p=int(input("Press 1 to view the timeslots"))
+            if p==1:
+                k=cur.execute("select * from mcdining ")
+                for i in cur:
+                    print(i)
+            print(" ")
         elif r=='thaal':
             u=input("Enter the time slot")
+            cur.execute("UPDATE `zomato`.`thaaldining` SET `status` = 'reserved' WHERE (`time_slots` = '{}');".format(u))
+            con.commit()
+            p=int(input("Press 1 to view the timeslots"))
+            if p==1:
+                k=cur.execute("select * from thaaldining ")
+                for i in cur:
+                    print(i)
+            print(" ")
+    menu()
     
 
 def admin():
     print("Welcome sir")
-    y=input( "Select store you want to make changes to from\nKfc\nMcDonalds\nThaal\nBurgerKing\n>>>")
+    y=input( "Select store you want to make changes to from\nKfc\nMcDonalds\nThaal\nBurgerKing\nMenu\n>>>")
     if y=="kfc":
         print("1=add new dish")
         print("2=find using sl_no")
         print("3=view the menu")
         print("4=delete selected values using sl_no")
         print("5=close")
-        u=int(input("Enter the command u wanna do?"))
+        u=int(input("Enter the command u wanna do?\n>>>"))
         if u==1:
               I=input("Enter name of the item u want to add")
               P=int(input("Enter the price of the item u added"))
@@ -389,22 +423,21 @@ def admin():
               print("The values have been added!")
               con.commit()
         elif u==2:
-            for i in range(1):
-                a=int(input("input sl_no of item"))
-                cur.execute("select * from kfc WHERE sl_no={}".format(a))
-                n=cur.fetchall()
-                print(n)
+            a=int(input("input sl_no of item"))
+            k=cur.execute("select * from kfc WHERE sl_no={}".format(a))
+            for i in cur:
+                print(i)
         elif u==3:
-            for i in range(1):
-                cur.execute("select * from kfc ")
-                n=cur.fetchall()
-                print(n)
+            k=cur.execute("select * from kfc ")
+            for i in cur:
+                print(i)
         elif u==4:
             e=int(input("Enter the sl_no of the item u want to delete"))
             cur.execute("UPDATE `zomato`.`kfc` SET `sl_no` = NULL, `item` = NULL, `price` = NULL WHERE (`sl_no` = '{}')".format(e))
             con.commit()
         elif u==5:
             exit()
+    
 
             
     if y=="thaal":
@@ -421,16 +454,14 @@ def admin():
               print("The values have been added!")
               con.commit()
         elif u==2:
-            for i in range(1):
-                a=int(input("input sl_no of item"))
-                cur.execute("select * from thaal WHERE sl_no={}".format(a))
-                n=cur.fetchall()
-                print(n)
+            a=int(input("input sl_no of item"))
+            k=cur.execute("select * from thaal WHERE sl_no={}".format(a))
+            for i in cur:
+                print(i)
         elif u==3:
-            for i in range(1):
-                cur.execute("select * from thaal ")
-                n=cur.fetchall()
-                print(n)
+            k=cur.execute("select * from thaal ")
+            for i in cur:
+                print(i)
         elif u==4:
             e=int(input("Enter the sl_no of the item u want to delete"))
             cur.execute("UPDATE `zomato`.`thaal` SET `sl_no` = NULL, `item` = NULL, `price` = NULL WHERE (`sl_no` = '{}')".format(e))
@@ -452,16 +483,14 @@ def admin():
               print("The values have been added!")
               con.commit()
         elif u==2:
-            for i in range(1):
-                a=int(input("input sl_no of item"))
-                cur.execute("select * from burgerking WHERE sl_no={}".format(a))
-                n=cur.fetchall()
-                print(n)
+            a=int(input("input sl_no of item"))
+            k=cur.execute("select * from burgerking WHERE sl_no={}".format(a))
+            for i in cur:
+                print(i)
         elif u==3:
-            for i in range(1):
-                cur.execute("select * from burgerking ")
-                n=cur.fetchall()
-                print(n)
+            k=cur.execute("select * from burgerking ")
+            for i in cur:
+                print(i)
         elif u==4:
             e=int(input("Enter the sl_no of the item u want to delete"))
             cur.execute("UPDATE `zomato`.`burgerking` SET `sl_no` = NULL, `item` = NULL, `price` = NULL WHERE (`sl_no` = '{}')".format(e))
@@ -475,6 +504,7 @@ def admin():
         print("3=view the menu")
         print("4=delete selected values using sl_no")
         print("5=close")
+        
         u=int(input("Enter the command u wanna do?"))
         if u==1:
               I=input("Enter name of the item u want to add")
@@ -483,22 +513,23 @@ def admin():
               print("The values have been added!")
               con.commit()
         elif u==2:
-            for i in range(1):
-                a=int(input("input sl_no of item"))
-                cur.execute("select * from mc WHERE sl_no={}".format(a))
-                n=cur.fetchall()
-                print(n)
+            a=int(input("input sl_no of item"))
+            k=cur.execute("select * from mc WHERE sl_no={}".format(a))
+            for i in cur:
+                print(i)
         elif u==3:
-            for i in range(1):
-                cur.execute("select * from mc ")
-                n=cur.fetchall()
-                print(n)
+            k=cur.execute("select * from mc ")
+            for i in cur:
+                print(i)
         elif u==4:
             e=int(input("Enter the sl_no of the item u want to delete"))
             cur.execute("UPDATE `zomato`.`mc` SET `sl_no` = NULL, `item` = NULL, `price` = NULL WHERE (`sl_no` = '{}')".format(e))
             con.commit()
         elif u==5:
             exit()
+    if y=="menu":
+        menu()
+        
 
 
         
@@ -514,6 +545,5 @@ menu()
 #add customer tables
 
 #added online delivery(booking),add dine-in
-
 
 
