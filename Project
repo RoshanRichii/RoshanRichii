@@ -21,6 +21,10 @@ def menu():
             b=int(input("Enter 1 to view outlets"))
             outlets()
         elif a==2:
+            #cur.execute("CREATE TABLE `thaaldining` (`time_slots` varchar(45) DEFAULT NULL,`status` varchar(45) DEFAULT NULL")
+            #cur.execute("CREATE TABLE `mcdining` (`time_slots` varchar(45) DEFAULT NULL,`status` varchar(45) DEFAULT NULL")
+            #cur.execute("CREATE TABLE `kfcdining` (`time_slots` varchar(45) DEFAULT NULL,`status` varchar(45) DEFAULT NULL")
+            #cur.execute("CREATE TABLE `burgerkingdining` (`time_slots` varchar(45) DEFAULT NULL,`status` varchar(45) DEFAULT NULL")
             dining()
         else:
             exit()
@@ -102,21 +106,21 @@ def kfc():
         con.commit()
         t=input("Do you want to order from other restrnts")
         if t=="yes":
-                    f=input("\nThe availible restraunts are:-\n*KFC\n*BURGERKING\n*THAAL RESTRNT\n*MCDONALDS\n")
-                    if f=='kfc':
+                    f=int(input("\nThe availible restraunts are:-\n*1=KFC\n*2=BURGERKING\n*3=THAAL RESTRNT\n*4=MCDONALDS\n"))
+                    if f==1:
                             kfc()
-                    if f=='burger king':
+                    if f==2:
                             burgerking()
-                    if f=='thaal':
+                    if f==3:
                             thaal()
-                    if f=='mc':
+                    if f==4:
                             mc()
                             
         if t=="no":
-            p=[]
-            cur.execute("select price from bill ")
-            p.append(cur.fetchall()[0][0])
-            print("overall sum is",sum(p))
+            
+            a=cur.execute("select sum(price) from bill ")
+            z=cur.fetchall()
+            print("overall sum is",z[0][0])
 
 def burgerking():
     a=int(input("Enter 1 to open menu"))
@@ -165,20 +169,20 @@ def burgerking():
         con.commit()
         t=input("Do you want to order from other restrnts")
         if t=="yes":
-                    f=input("\nThe availible restraunts are:-\n*KFC\n*BURGERKING\n*THAAL RESTRNT\n*MCDONALDS\n")
-                    if f=='kfc':
+                    f=int(input("\nThe availible restraunts are:-\n*1=KFC\n*2=BURGERKING\n*3=THAAL RESTRNT\n*4=MCDONALDS\n"))
+                    if f==1:
                             kfc()
-                    if f=='burger king':
+                    if f==2:
                             burgerking()
-                    if f=='thaal':
+                    if f==3:
                             thaal()
-                    if f=='mc':
+                    if f==4:
                             mc()
         if t=="no":
-            p=[]
-            cur.execute("select price from bill ")
-            p.append(cur.fetchall()[0][0])
-            print("overall sum is",sum(p))
+            
+            a=cur.execute("select sum(price) from bill ")
+            z=cur.fetchall()
+            print("overall sum is",z[0][0])
 
             
 def thaal():
@@ -263,22 +267,20 @@ def thaal():
         con.commit()
         t=input("Do you want to order from other restrnts")
         if t=="yes":
-                    f=input("\nThe availible restraunts are:-\n*KFC\n*BURGERKING\n*THAAL RESTRNT\n*MCDONALDS\n")
-                    if f=='kfc':
+                    f=int(input("\nThe availible restraunts are:-\n*1=KFC\n*2=BURGERKING\n*3=THAAL RESTRNT\n*4=MCDONALDS\n"))
+                    if f==1:
                             kfc()
-                    if f=='burger king':
+                    if f==2:
                             burgerking()
-                    if f=='thaal':
+                    if f==3:
                             thaal()
-                    if f=='mc':
+                    if f==4:
                             mc()
         if t=="no":
-            a=int(input("the no: of stores u bought from?"))
-            for i in range(a):
-                p=[]
-                a=cur.execute("select price from bill ")
-                p.append(cur.fetchall()(a[0][0]))
-            print("total sum is",sum(p))
+            
+            a=cur.execute("select sum(price) from bill ")
+            z=cur.fetchall()
+            print("overall sum is",z[0][0])
             
 
             
@@ -332,21 +334,22 @@ def  mc():
         con.commit()
         t=input("Do you want to order from other restrnts")
         if t=="yes":
-                    f=input("\nThe availible restraunts are:-\n*KFC\n*BURGERKING\n*THAAL RESTRNT\n*MCDONALDS\n")
-                    if f=='kfc':
+                    f=int(input("\nThe availible restraunts are:-\n*1=KFC\n*2=BURGERKING\n*3=THAAL RESTRNT\n*4=MCDONALDS\n"))
+                    if f==1:
                             kfc()
-                    if f=='burger king':
+                    if f==2:
                             burgerking()
-                    if f=='thaal':
+                    if f==3:
                             thaal()
-                    if f=='mc':
-                            mc
-                            ()
+                    if f==4:
+                            mc()
         if t=="no":
-            p=[]
-            cur.execute("select price from bill ")
-            p.append(cur.fetchall()[0][0])
-            print("overall sum is",sum(p))
+            
+            a=cur.execute("select sum(price) from bill ")
+            z=cur.fetchall()
+            print("overall sum is",z[0][0])
+            
+            
 
             
 def delete():
@@ -360,6 +363,11 @@ def dining():
         print("KFC\nTHAAL RESTRNT\nBURGER KING\nMCDONALDS\n")
         r=input("Where do u want to book a slot at\n")
         if r=='kfc':
+            #cur.execute("insert into kfcdining values('19:00-20:00','unbooked')")
+            #cur.execute("insert into kfcdining values('20:00-21:00','unbooked')")
+            #cur.execute("insert into kfcdining values('21:00-22:00','unbooked')")
+            #cur.execute("insert into kfcdining values('12:00-23:00','unbooked')")
+            #cur.execute("insert into kfcdining values('23:00-24:00','unbooked')")
             u=input("Enter the time slot")
             cur.execute("UPDATE `zomato`.`kfcdining` SET `status` = 'reserved' WHERE (`time_slots` = '{}');".format(u))
             con.commit()
@@ -373,6 +381,11 @@ def dining():
                 
             con.commit()
         elif r=='burgerking':
+            #cur.execute("insert into burgerkingdining values('19:00-20:00','unbooked')")
+            #cur.execute("insert into burgerkingdining values('20:00-21:00','unbooked')")
+            #cur.execute("insert into burgerkingdining values('21:00-22:00','unbooked')")
+            #cur.execute("insert into burgerkingdining values('12:00-23:00','unbooked')")
+            #cur.execute("insert into burgerkingdining values('23:00-24:00','unbooked')")
             u=input("Enter the time slot")
             cur.execute("UPDATE `zomato`.`burgerkingdining` SET `status` = 'reserved' WHERE (`time_slots` = '{}');".format(u))
             con.commit()
@@ -384,9 +397,15 @@ def dining():
                     print(i)
             print(" ")
         elif r=='mc':
+            #cur.execute("insert into mcdining values('19:00-20:00','unbooked')")
+            #cur.execute("insert into mcdining values('20:00-21:00','unbooked')")
+            #cur.execute("insert into mcdining values('21:00-22:00','unbooked')")
+            #cur.execute("insert into mcdining values('12:00-23:00','unbooked')")
+            #cur.execute("insert into mcdining values('23:00-24:00','unbooked')")
             u=input("Enter the time slot")
             cur.execute("UPDATE `zomato`.`mcdining` SET `status` = 'reserved' WHERE (`time_slots` = '{}');".format(u))
             con.commit()
+            print("Reservation booked\n")
             p=int(input("Press 1 to view the timeslots"))
             if p==1:
                 k=cur.execute("select * from mcdining ")
@@ -394,9 +413,15 @@ def dining():
                     print(i)
             print(" ")
         elif r=='thaal':
+            #cur.execute("insert into thaaldining values('19:00-20:00','unbooked')")
+            #cur.execute("insert into thaaldining values('20:00-21:00','unbooked')")
+            #cur.execute("insert into thaaldining values('21:00-22:00','unbooked')")
+            #cur.execute("insert into thaaldining values('12:00-23:00','unbooked')")
+            #cur.execute("insert into thaaldining values('23:00-24:00','unbooked')")
             u=input("Enter the time slot")
             cur.execute("UPDATE `zomato`.`thaaldining` SET `status` = 'reserved' WHERE (`time_slots` = '{}');".format(u))
             con.commit()
+            print("Reservation booked\n")
             p=int(input("Press 1 to view the timeslots"))
             if p==1:
                 k=cur.execute("select * from thaaldining ")
@@ -535,7 +560,6 @@ def admin():
         
               
               
-
 delete()
 menu()
 
@@ -545,5 +569,3 @@ menu()
 #add customer tables
 
 #added online delivery(booking),add dine-in
-
-
