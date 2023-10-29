@@ -1,0 +1,399 @@
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Install pip-MYSQL                                                 |TYPE 3|
+Close                                                                         |TYPE 4|
+|---------------------------------------------------------------|
+
+>>>1
+Name:1
+Phone Number:1
+Address:1
+--------------------------------------------------------------|
+Order Online                                                      |TYPE 1|
+Dine-In                                                                |TYPE 2|
+Menu                                                                    |TYPE 3|
+--------------------------------------------------------------|
+
+>>>1
+|---------------------------------------------------------------|
+                                      OUTLETS                                           
+|---------------------------------------------------------------|
+Kfc                                                                          |TYPE 1|
+BurgerKing                                                            |TYPE 2|
+Thaal Kitchen                                                        |TYPE 3|
+Mc Donalds                                                           |TYPE 4|
+|---------------------------------------------------------------|
+>>>1
+Opening menu..........
+
++-------+-----------------------+-------------+
+| sl_no | item                                        | price |
++-------+-----------------------+-------------+
+|     1     | veg zinger burger                |   130 |
+|     2     | chicken zinger burger        |   150 |
+|     3     | kruncy burger                      |   160 |
+|     4     | rice bowl                               |   165 |
+|     5     | popcorn chicken                 |   165 |
+|     6     | smokey grilled                     |   200 |
+|     7     | 2 pc CrispyC                        |   200 |
+|     8     | 4 pc CrispyC                        |   380 |
+|     9      | 6 pc CrispyC                       |   530 |
+|    10    | 8 pc CrispyC                        |   730 |
+|    11    | pepsi                                      |   120 |
+|    12    | chococrushers                     |   120 |
+|    13    | vanila icecream                   |    60  |
+|    14    | mayo dip                              |    20   |
+|    15    | ketchup                                 |    10   |
+|    16    | spirte                                     |    60   |
+|    17    | 4s fam meal                          |   580  |
+|    18    | 6s fam meal                          |   800  |
+|    19    | chicken biriyani                  |   160  |
+|    20    | grilled c.biriyani                 |   190  |
++-------+-----------------------+-------------+
+Input sl_no of item
+
+>>>1
+(1, 'veg zinger burger', 130) has been added to cart
+
+Do you want to buy more     (y/n)
+>>>y
+Input sl_no of item
+
+>>>1
+(1, 'veg zinger burger', 130) has been added to cart
+
+Do you want to buy more     (y/n)
+>>>n
+Total sum from kfc is 260
+
+
+Do you want to order from other restaurantsy
+
+The availible restaurants are
+
+|--------------------------------------------------------------------------|
+                                 Restaurants Availible
+|--------------------------------------------------------------------------|
+Kfc                                                         |TYPE 1|
+Burger King                                          |TYPE 2|
+Thaal Restaurant                                  |TYPE 3|
+Mc Donalds                                          |TYPE 4|
+|--------------------------------------------------------------------------|
+>>>2
+Opening menu.........
++-------+------------------------+-------+
+| sl_no | item                                    | price |
++-------+------------------------+-------+
+|     1 | chicken tandoori grill              |  140 |
+|     2 | fiery chicken                             |  170 |
+|     3 | cheese meltdown                     |  160 |
+|     4 | paneer overload                       |  170 |
+|     5 | chicken mahani burst             |    70 |
+|     6 | crispy chicken                          |    70 |
+|     7 | chicken volcano                       |    80 |
+|     8 | hot n cheesy burger                 |  210 |
+|     9 | paneer royale                            |  210 |
+|    10 | chicken tandoori                     |  220 |
+|    11 | veg whooper                            |  170 |
+|    12 | chicken whooper                    |  230 |
+|    13 | mutton whooper                     | 260 |
+|    14 | pepsi                                         |    40 |
+|    15 | mineral water                          |    40 |
++-------+------------------------+-------+-----
+Input sl_no of item
+
+>>>1
+(1, 'chicken tandoori grill', 140) has been added to cart
+
+Do you want to buy more     (y/n)
+>>>y
+Input sl_no of item
+
+>>>2
+(2, 'fiery chicken', 170) has been added to cart
+
+Do you want to buy more     (y/n)
+>>>n
+Total sum from burgerking is 310
+
+Do you want to order from other restaurantsn
+---------------------------------------------------|
+Total amount                                        = 570 ₹ |
+---------------------------------------------------|
+
+Thank you for purchasing
+>>> 
+====================================== RESTART: E:\1Drive\OneDrive\Desktop\ZomatoREAL.py =====================================
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Install pip-MYSQL                                                 |TYPE 3|
+Close                                                                         |TYPE 4|
+|---------------------------------------------------------------|
+
+>>>2
+Enter password1111
+Invalid
+Enter password0000
+Welcome sir
+|--------------------------------------------------------------------------|
+                                 Restaurants Availible
+|--------------------------------------------------------------------------|
+Kfc                                                         |TYPE 1|
+Burger King                                          |TYPE 2|
+Thaal Restaurant                                  |TYPE 3|
+Mc Donalds                                          |TYPE 4|
+Menu                                                     |TYPE 5|
+|--------------------------------------------------------------------------|
+>>>1
+|--------------------------------------------------------------------------|
+                                            Restaurants 
+|--------------------------------------------------------------------------|
+Add                                                         |TYPE 1|
+View Selected                                        |TYPE 2|
+View All                                                 |TYPE 3|
+Delete using sl_no                                |TYPE 4|
+Close                                                      |TYPE 5|
+|--------------------------------------------------------------------------|
+Enter the command u wanna do?
+>>>1
+Enter name of the item u want to addChilly Burger
+Enter the price of the item u added210
+The values have been added!
+
+
+Go to homescreen                                |TYPE 1|
+Quit the code                                        |TYPE 2|
+>>>1
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Close                                                                         |TYPE 3|
+|---------------------------------------------------------------|
+
+>>>2
+Enter password0000
+Welcome sir
+|--------------------------------------------------------------------------|
+                                 Restaurants Availible
+|--------------------------------------------------------------------------|
+Kfc                                                         |TYPE 1|
+Burger King                                          |TYPE 2|
+Thaal Restaurant                                  |TYPE 3|
+Mc Donalds                                          |TYPE 4|
+Menu                                                     |TYPE 5|
+|--------------------------------------------------------------------------|
+>>>1
+|--------------------------------------------------------------------------|
+                                            Restaurants 
+|--------------------------------------------------------------------------|
+Add                                                         |TYPE 1|
+View Selected                                        |TYPE 2|
+View All                                                 |TYPE 3|
+Delete using sl_no                                |TYPE 4|
+Close                                                      |TYPE 5|
+|--------------------------------------------------------------------------|
+Enter the command u wanna do?
+>>>2
+Input sl_no of item
+4
+(4, 'rice bowl', 165)
+
+
+Go to homescreen                                |TYPE 1|
+Quit the code                                        |TYPE 2|
+>>>1
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Close                                                                         |TYPE 3|
+|---------------------------------------------------------------|
+
+>>>2
+Enter password0000
+Welcome sir
+|--------------------------------------------------------------------------|
+                                 Restaurants Availible
+|--------------------------------------------------------------------------|
+Kfc                                                         |TYPE 1|
+Burger King                                          |TYPE 2|
+Thaal Restaurant                                  |TYPE 3|
+Mc Donalds                                          |TYPE 4|
+Menu                                                     |TYPE 5|
+|--------------------------------------------------------------------------|
+>>>1
+|--------------------------------------------------------------------------|
+                                            Restaurants 
+|--------------------------------------------------------------------------|
+Add                                                         |TYPE 1|
+View Selected                                        |TYPE 2|
+View All                                                 |TYPE 3|
+Delete using sl_no                                |TYPE 4|
+Close                                                      |TYPE 5|
+|--------------------------------------------------------------------------|
+Enter the command u wanna do?
+>>>3
+(1, 'veg zinger burger', 130)
+(2, 'chicken zinger burger', 150)
+(3, 'kruncy burger', 160)
+(4, 'rice bowl', 165)
+(5, 'popcorn chicken', 165)
+(6, 'smokey grilled', 200)
+(7, '2 pc CrispyC', 200)
+(8, '4 pc CrispyC', 380)
+(9, '6 pc CrispyC', 530)
+(10, '8 pc CrispyC', 730)
+(11, 'pepsi', 120)
+(12, 'chococrushers', 120)
+(13, 'vanila icecream', 60)
+(14, 'mayo dip', 20)
+(15, 'ketchup', 10)
+(16, 'spirte', 60)
+(17, '4s fam meal', 580)
+(18, '6s fam meal', 800)
+(19, 'chicken biriyani', 160)
+(20, 'grilled c.biriyani', 190)
+(21, 'Chillers', 6)
+(22, 'Chilly Burger', 210)
+
+
+Go to homescreen                                |TYPE 1|
+Quit the code                                        |TYPE 2|
+>>>1
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Close                                                                         |TYPE 3|
+|---------------------------------------------------------------|
+
+>>>2
+Enter password0000
+Welcome sir
+|--------------------------------------------------------------------------|
+                                 Restaurants Availible
+|--------------------------------------------------------------------------|
+Kfc                                                         |TYPE 1|
+Burger King                                          |TYPE 2|
+Thaal Restaurant                                  |TYPE 3|
+Mc Donalds                                          |TYPE 4|
+Menu                                                     |TYPE 5|
+|--------------------------------------------------------------------------|
+>>>1
+|--------------------------------------------------------------------------|
+                                            Restaurants 
+|--------------------------------------------------------------------------|
+Add                                                         |TYPE 1|
+View Selected                                        |TYPE 2|
+View All                                                 |TYPE 3|
+Delete using sl_no                                |TYPE 4|
+Close                                                      |TYPE 5|
+|--------------------------------------------------------------------------|
+Enter the command u wanna do?
+>>>3
+(1, 'veg zinger burger', 130)
+(2, 'chicken zinger burger', 150)
+(3, 'kruncy burger', 160)
+(4, 'rice bowl', 165)
+(5, 'popcorn chicken', 165)
+(6, 'smokey grilled', 200)
+(7, '2 pc CrispyC', 200)
+(8, '4 pc CrispyC', 380)
+(9, '6 pc CrispyC', 530)
+(10, '8 pc CrispyC', 730)
+(11, 'pepsi', 120)
+(12, 'chococrushers', 120)
+(13, 'vanila icecream', 60)
+(14, 'mayo dip', 20)
+(15, 'ketchup', 10)
+(16, 'spirte', 60)
+(17, '4s fam meal', 580)
+(18, '6s fam meal', 800)
+(19, 'chicken biriyani', 160)
+(20, 'grilled c.biriyani', 190)
+(21, 'Chillers', 6)
+(22, 'Chilly Burger', 210)
+
+
+Go to homescreen                                |TYPE 1|
+Quit the code                                        |TYPE 2|
+>>>1
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Close                                                                         |TYPE 3|
+|---------------------------------------------------------------|
+
+>>>3
+>>> 
+====================================== RESTART: E:\1Drive\OneDrive\Desktop\ZomatoREAL.py =====================================
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Install pip-MYSQL                                                 |TYPE 3|
+Close                                                                         |TYPE 4|
+|---------------------------------------------------------------|
+
+>>>3
+Do you want to install the code
+type y for yes and n for no
+>>>y
+the database that you are trying to add already exists in the computer
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Close                                                                         |TYPE 3|
+|---------------------------------------------------------------|
+
+>>>3
+>>> 
+====================================== RESTART: E:\1Drive\OneDrive\Desktop\ZomatoREAL.py =====================================
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Install pip-MYSQL                                                 |TYPE 3|
+Close                                                                         |TYPE 4|
+|---------------------------------------------------------------|
+
+>>>3
+Do you want to install the code
+type y for yes and n for no
+>>>n
+Please use the other program
+|---------------------------------------------------------------|
+                   WELCOME TO ZOMATO
+                   WE BRING FOOD TO YOU
+|---------------------------------------------------------------|
+Customer                                                                 |TYPE 1|
+Admin                                                                      |TYPE 2|
+Close                                                                         |TYPE 3|
+|---------------------------------------------------------------|
+
+>>>
