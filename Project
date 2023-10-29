@@ -1,3 +1,4 @@
+
 import mysql.connector
 import time
 con=mysql.connector.connect(host="localhost",user= "root",password="password",charset="utf8")
@@ -43,14 +44,18 @@ def menu():
         print("--------------------------------------------------------------|\n"
         "Order Online                                                      |TYPE 1|\n"
         "Dine-In                                                                |TYPE 2|\n"
+        "Menu                                                                    |TYPE 3|\n"
         "--------------------------------------------------------------|\n")
         a=int(input(">>>"))
         if a==1:
-            outlets()
+            delete()
+            
         elif a==2:
             dining()
+        elif a==3:
+            menu()
         else:
-            exit()
+            print("")
     if r=="2":
         o=0
         while o==0:
@@ -78,14 +83,18 @@ def menu2():
         print("--------------------------------------------------------------|\n"
         "Order Online                                                      |TYPE 1|\n"
         "Dine-In                                                                |TYPE 2|\n"
+        "Menu                                                                    |TYPE 3|\n"
         "--------------------------------------------------------------|\n")
         a=int(input(">>>"))
         if a==1:
+            delete()
             outlets()
         elif a==2:
             dining()
+        elif a==3:
+            menu()
         else:
-            exit()
+            print("")
     if r=="2":
         o=0
         while o==0:
@@ -114,12 +123,12 @@ def checker():
             cur.execute("delete from bill")
             cur.execute("create table mc(`sl_no` INT NOT NULL AUTO_INCREMENT,`item` VARCHAR(45) NULL,`price` INT NULL,PRIMARY KEY (`sl_no`));")
             con.commit()
-            print("congrats on purchasing our program.")
-            ty2("installation of our program is complete please proceed to the main program")
+            print("Congrats on purchasing our program.")
+            ty2("Installation of our program is complete please proceed to the main program")
             welcomescreen()  
         elif choice=="n":
-            print("please use the other program")
-            welcomescreen()
+            print("Please use the other program")
+            menu2()
 
         else:
           print("please type an actual value")
@@ -185,23 +194,24 @@ def kfc():
         l=[]
         for i in range(t):
             
-            a=int(input("input sl_no of item"))
+            print("Input sl_no of item\n")
+            a=int(input(">>>"))
             
             cur.execute("select price from kfc WHERE sl_no={}".format(a))
             
             l.append(cur.fetchall()[0][0])
         
             cur.execute("select * from kfc WHERE sl_no={}".format(a))
-            n=cur.fetchall()
-            print(n)
+            n=(cur.fetchall()[0])
+            print(n,"has been added to cart\n")
             
-        print("total sum from kfc is",sum(l))
+        print("Total sum from kfc is",sum(l))
         y=sum(l)
         b="kfc"
         
         cur.execute("insert into bill(shops,price) values('{}',{})".format(b,y))
         con.commit()
-        t=input("Do you want to order from other restaurants")
+        t=input("\n\nDo you want to order from other restaurants")
         if t=="yes":
             print("\nThe availible restaurants are")
             print("")
@@ -225,9 +235,13 @@ def kfc():
                             
         if t=="no":
             p=[]
-            cur.execute("select price from bill ")
+            cur.execute("select sum(price) from bill ")
             p.append(cur.fetchall()[0][0])
-            print("overall sum is",sum(p))
+            print("---------------------------------------------------|")
+            print("Total amount                                        =",p[0],"₹ |")
+            print("---------------------------------------------------|")
+            
+            print("\nThank you for purchasing")
 
 def burgerking():
     cur.execute("use zomato")
@@ -254,28 +268,29 @@ def burgerking():
 |    15 | mineral water                          |    40 |
 +-------+------------------------+-------+-----""")
         
-        t=int(input("enter number of items u want to buy?"))
+        print("Enter number of items u want to buy?")
+        t=int(input(">>>"))
         m=0
         l=[]
         for i in range(t):
             
-            a=int(input("input sl_no of item"))
-            
+            print("Input sl_no of item\n")
+            a=int(input(">>>"))
             cur.execute("select price from burgerking WHERE sl_no={}".format(a))
             
             l.append(cur.fetchall()[0][0])
         
             cur.execute("select * from burgerking WHERE sl_no={}".format(a))
-            n=cur.fetchall()
-            print(n)
+            n=(cur.fetchall()[0])
+            print(n,"has been added to cart\n")
             
-        print("total sum from burgerking is",sum(l))
+        print("Total sum from burgerking is",sum(l))
         y=sum(l)
         b="BurgerKing"
         
         cur.execute("insert into bill(shops,price) values('{}',{})".format(b,y))
         con.commit()
-        t=input("Do you want to order from other restaurants")
+        t=input("\nDo you want to order from other restaurants")
         if t=="yes":
             print("\nThe availible restaurants are")
             print("")
@@ -298,9 +313,14 @@ def burgerking():
                     mc()
         if t=="no":
             p=[]
-            cur.execute("select price from bill ")
+            cur.execute("select sum(price) from bill ")
             p.append(cur.fetchall()[0][0])
-            print("overall sum is",sum(p))
+            print("---------------------------------------------------|")
+            print("Total amount                                        =",p[0],"₹ |")
+            print("---------------------------------------------------|")
+            
+            print("\nThank you for purchasing")
+            
 
             
 def thaal():
@@ -363,22 +383,24 @@ def thaal():
 |    50 | chicken lollipop                         |   170  |
 +-------+----------------------+---------------+)""")
         
-        t=int(input("enter number of items u want to buy?"))
+        print("Enter number of items u want to buy?")
+        t=int(input(">>>"))
         m=0
         l=[]
         for i in range(t):
             
-            a=int(input("input sl_no of item"))
+            print("Input sl_no of item\n")
+            a=int(input(">>>"))
             
             cur.execute("select price from thaal WHERE sl_no={}".format(a))
             
             l.append(cur.fetchall()[0][0])
         
             cur.execute("select * from thaal WHERE sl_no={}".format(a))
-            n=cur.fetchall()
-            print(n)
+            n=(cur.fetchall()[0])
+            print(n,"has been added to cart\n")
     
-        print("total sum from thaal is",sum(l))
+        print("Total sum from thaal is",sum(l))
         y=sum(l)
         b="Thaal Restrnt"
         
@@ -407,9 +429,14 @@ def thaal():
                     mc()
         if t=="no":
             p=[]
-            cur.execute("select price from bill ")
+            cur.execute("select sum(price) from bill ")
             p.append(cur.fetchall()[0][0])
-            print("overall sum is",sum(p))
+            print("---------------------------------------------------|")
+            print("Total amount                                          =",p[0],"₹ |")
+            print("---------------------------------------------------|")
+            
+            print("\nThank you for purchasing")
+
             
 
             
@@ -442,21 +469,23 @@ def  mc():
 |    20 | hot honey pancakes                  |   120 |
 +-------+-------------------------+-------+------""")
         
-        t=int(input("enter number of items u want to buy?"))
+        print("Enter number of items u want to buy?")
+        t=int(input(">>>"))
         m=0
         l=[]
         for i in range(t):
             
-            a=int(input("input sl_no of item"))
+            print("Input sl_no of item\n")
+            a=int(input(">>>"))
             
             cur.execute("select price from mc WHERE sl_no={}".format(a))
             
             l.append(cur.fetchall()[0][0])
         
             cur.execute("select * from mc WHERE sl_no={}".format(a))
-            n=cur.fetchall()
-            print(n)
-        print("total sum from Mcdonalds is",sum(l))
+            n=(cur.fetchall()[0])
+            print(n,"has been added to cart\n")
+        print("Total sum from Mcdonalds is",sum(l))
         y=sum(l)
         b="Mc.donalds"
         cur.execute("insert into bill(shops,price) values('{}',{})".format(b,y))
@@ -484,17 +513,24 @@ def  mc():
                     mc()
         if t=="no":
             p=[]
-            a=cur.execute("select sum(price) from bill ")
-            cur.fetchall()
-            print("overall sum is",a)
+            cur.execute("select sum(price) from bill ")
+            p.append(cur.fetchall()[0][0])
+            print("---------------------------------------------------|")
+            print("Total amount                                        =",p[0],"₹ |")
+            print("---------------------------------------------------|")
+            
+            print("\nThank you for purchasing")
 
             
 def delete():
+    cur.execute("use zomato")
     cur.execute("delete from bill")
     con.commit()
+    outlets()
 
 def dining():
-    y=int(input("Press 1 to view the availible dining restrarunts near me"))
+    cur.execute("use zomato")
+    y=1
     if y==1:
         print("The availible dining locations are")
         print("")
@@ -551,136 +587,317 @@ def dining():
                 for i in cur:
                     print(i)
             print(" ")
-    menu()
+    
     
 
 def admin():
     print("Welcome sir")
-    y=input( "Select store you want to make changes to from\nKfc\nMcDonalds\nThaal\nBurgerKing\nMenu\n>>>")
-    if y=="kfc":
-        print("1=add new dish")
-        print("2=find using sl_no")
-        print("3=view the menu")
-        print("4=delete selected values using sl_no")
-        print("5=close")
-        u=int(input("Enter the command u wanna do?\n>>>"))
+    print("|--------------------------------------------------------------------------|")
+    print("                                 Restaurants Availible")
+    print("|--------------------------------------------------------------------------|")
+    print("Kfc                                                         |TYPE 1|")
+    print("Burger King                                          |TYPE 2|")
+    print("Thaal Restaurant                                  |TYPE 3|")
+    print("Mc Donalds                                          |TYPE 4|")
+    print("Menu                                                     |TYPE 5|")
+    print("|--------------------------------------------------------------------------|")
+    y=int(input(">>>"))
+    if y==1:
+        cur.execute("use zomato")
+        print("|--------------------------------------------------------------------------|")
+        print("                                            Restaurants ")
+        print("|--------------------------------------------------------------------------|")
+        print("Add                                                         |TYPE 1|")
+        print("View Selected                                        |TYPE 2|")
+        print("View All                                                 |TYPE 3|")
+        print("Delete using sl_no                                |TYPE 4|")
+        print("Close                                                      |TYPE 5|")
+        print("|--------------------------------------------------------------------------|")
+        print("Enter the command u wanna do?")
+        u=int(input(">>>"))
         if u==1:
               I=input("Enter name of the item u want to add")
               P=int(input("Enter the price of the item u added"))
               cur.execute("INSERT INTO kfc(`item`, `price`) VALUES ('{}', {})".format(I,P))
               print("The values have been added!")
               con.commit()
+              print("")
+              print("")
+              print("Go to homescreen                                |TYPE 1|")
+              print("Quit the code                                        |TYPE 2|")
+              t=int(input(">>>"))
+              if t==1:
+                  menu2()
+              elif t==2:
+                  exit()
         elif u==2:
-            a=int(input("input sl_no of item"))
+            a=int(input("Input sl_no of item\n"))
             k=cur.execute("select * from kfc WHERE sl_no={}".format(a))
             for i in cur:
                 print(i)
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
+
+                  
         elif u==3:
             k=cur.execute("select * from kfc ")
             for i in cur:
                 print(i)
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
+            
         elif u==4:
             e=int(input("Enter the sl_no of the item u want to delete"))
             cur.execute("UPDATE `zomato`.`kfc` SET `sl_no` = NULL, `item` = NULL, `price` = NULL WHERE (`sl_no` = '{}')".format(e))
             con.commit()
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==5:
             exit()
     
 
             
-    if y=="thaal":
-        print("1=add new dish")
-        print("2=find using sl_no")
-        print("3=view the menu")
-        print("4=delete selected values using sl_no")
-        print("5=close")
-        u=int(input("Enter the command u wanna do?"))
+    if y==3:
+        cur.execute("use zomato")
+        print("|--------------------------------------------------------------------------|")
+        print("                                            Restaurants ")
+        print("|--------------------------------------------------------------------------|")
+        print("Add                                                         |TYPE 1|")
+        print("View Selected                                        |TYPE 2|")
+        print("View All                                                 |TYPE 3|")
+        print("Delete using sl_no                                |TYPE 4|")
+        print("Close                                                      |TYPE 5|")
+        print("|--------------------------------------------------------------------------|")
+        print("Enter the command u wanna do?")
+        u=int(input(">>>"))
         if u==1:
               I=input("Enter name of the item u want to add")
               P=int(input("Enter the price of the item u added"))
               cur.execute("INSERT INTO thaal(`item`, `price`) VALUES ('{}', {})".format(I,P))
               print("The values have been added!")
               con.commit()
+              print("")
+              print("")
+              print("Go to homescreen                                |TYPE 1|")
+              print("Quit the code                                        |TYPE 2|")
+              t=int(input(">>>"))
+              if t==1:
+                  menu2()
+              elif t==2:
+                  exit()
         elif u==2:
-            a=int(input("input sl_no of item"))
+            a=int(input("Input sl_no of item\n"))
             k=cur.execute("select * from thaal WHERE sl_no={}".format(a))
             for i in cur:
                 print(i)
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==3:
             k=cur.execute("select * from thaal ")
             for i in cur:
                 print(i)
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==4:
             e=int(input("Enter the sl_no of the item u want to delete"))
             cur.execute("UPDATE `zomato`.`thaal` SET `sl_no` = NULL, `item` = NULL, `price` = NULL WHERE (`sl_no` = '{}')".format(e))
             con.commit()
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==5:
             exit()
 
-    if y=="burgerking":
-        print("1=add new dish")
-        print("2=find using sl_no")
-        print("3=view the menu")
-        print("4=delete selected values using sl_no")
-        print("5=close")
-        u=int(input("Enter the command u wanna do?"))
+    if y==2:
+        cur.execute("use zomato")
+        print("|--------------------------------------------------------------------------|")
+        print("                                            Restaurants ")
+        print("|--------------------------------------------------------------------------|")
+        print("Add                                                         |TYPE 1|")
+        print("View Selected                                        |TYPE 2|")
+        print("View All                                                 |TYPE 3|")
+        print("Delete using sl_no                                |TYPE 4|")
+        print("Close                                                      |TYPE 5|")
+        print("|--------------------------------------------------------------------------|")
+        print("Enter the command u wanna do?")
+        u=int(input(">>>"))
         if u==1:
               I=input("Enter name of the item u want to add")
               P=int(input("Enter the price of the item u added"))
               cur.execute("INSERT INTO burgerking(`item`, `price`) VALUES ('{}', {})".format(I,P))
               print("The values have been added!")
               con.commit()
+              print("")
+              print("")
+              print("Go to homescreen                                |TYPE 1|")
+              print("Quit the code                                        |TYPE 2|")
+              t=int(input(">>>"))
+              if t==1:
+                  menu2()
+              elif t==2:
+                  exit()
         elif u==2:
-            a=int(input("input sl_no of item"))
+            a=int(input("Input sl_no of item\n"))
             k=cur.execute("select * from burgerking WHERE sl_no={}".format(a))
             for i in cur:
                 print(i)
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==3:
             k=cur.execute("select * from burgerking ")
             for i in cur:
                 print(i)
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==4:
             e=int(input("Enter the sl_no of the item u want to delete"))
             cur.execute("UPDATE `zomato`.`burgerking` SET `sl_no` = NULL, `item` = NULL, `price` = NULL WHERE (`sl_no` = '{}')".format(e))
             con.commit()
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==5:
             exit()
 
-    if y=="mc":
-        print("1=add new dish")
-        print("2=find using sl_no")
-        print("3=view the menu")
-        print("4=delete selected values using sl_no")
-        print("5=close")
-        
-        u=int(input("Enter the command u wanna do?"))
+    if y==4:
+        cur.execute("use zomato")
+        print("|--------------------------------------------------------------------------|")
+        print("                                            Restaurants ")
+        print("|--------------------------------------------------------------------------|")
+        print("Add                                                         |TYPE 1|")
+        print("View Selected                                        |TYPE 2|")
+        print("View All                                                 |TYPE 3|")
+        print("Delete using sl_no                                |TYPE 4|")
+        print("Close                                                      |TYPE 5|")
+        print("Menu                                                     |TYPE 6|")
+        print("|--------------------------------------------------------------------------|")
+        print("Enter the command u wanna do?")
+        u=int(input(">>>"))
         if u==1:
-              I=input("Enter name of the item u want to add")
-              P=int(input("Enter the price of the item u added"))
+              I=input("Enter name of the item u want to add\n>>>")
+              P=int(input("Enter the price of the item u added\n>>>"))
               cur.execute("INSERT INTO mc(`item`, `price`) VALUES ('{}', {})".format(I,P))
               print("The values have been added!")
               con.commit()
+              print("")
+              print("")
+              print("Go to homescreen                                |TYPE 1|")
+              print("Quit the code                                        |TYPE 2|")
+              t=int(input(">>>"))
+              if t==1:
+                  menu2()
+              elif t==2:
+                  exit()
         elif u==2:
-            a=int(input("input sl_no of item"))
+            a=int(input("input sl_no of item\n>>>"))
             k=cur.execute("select * from mc WHERE sl_no={}".format(a))
             for i in cur:
                 print(i)
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==3:
             k=cur.execute("select * from mc ")
             for i in cur:
                 print(i)
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==4:
-            e=int(input("Enter the sl_no of the item u want to delete"))
+            e=int(input("Enter the sl_no of the item u want to delete\n>>>"))
             cur.execute("UPDATE `zomato`.`mc` SET `sl_no` = NULL, `item` = NULL, `price` = NULL WHERE (`sl_no` = '{}')".format(e))
             con.commit()
+            print("")
+            print("")
+            print("Go to homescreen                                |TYPE 1|")
+            print("Quit the code                                        |TYPE 2|")
+            t=int(input(">>>"))
+            if t==1:
+                  menu2()
+            elif t==2:
+                  exit()
         elif u==5:
             exit()
-    if y=="menu":
+            
+    if y==5:
+        cur.execute("use zomato")
         menu()
+
         
 menu()
-
-#add customer tables
 
 
 
